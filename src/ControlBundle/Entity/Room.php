@@ -38,7 +38,7 @@ class Room
     /**
      * @var string
      *
-     * @ORM\Column(name="type", type="string", length=45)
+     * @ORM\Column(name="type", type="string", columnDefinition="ENUM('SINGLE','DOUBLE','SUITE')", length=45)
      */
     private $type;
 
@@ -59,7 +59,7 @@ class Room
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=50)
+     * @ORM\Column(name="status", type="string", columnDefinition="ENUM('FREE','OCCUPIED')", length=50)
      */
     private $status;
 

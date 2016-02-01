@@ -109,6 +109,19 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return array (  '_controller' => 'ControlBundle\\Controller\\DefaultController::indexAction',  '_route' => 'control_homepage',);
         }
 
+        if (0 === strpos($pathinfo, '/control/client')) {
+            // control_client_index
+            if ($pathinfo === '/control/client/index') {
+                return array (  '_controller' => 'ControlBundle\\Controller\\ClientController::indexAction',  '_route' => 'control_client_index',);
+            }
+
+            // control_client_add
+            if ($pathinfo === '/control/client/add') {
+                return array (  '_controller' => 'ControlBundle\\Controller\\ClientController::addAction',  '_route' => 'control_client_add',);
+            }
+
+        }
+
         // homepage
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {

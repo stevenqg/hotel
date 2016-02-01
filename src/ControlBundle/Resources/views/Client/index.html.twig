@@ -1,0 +1,29 @@
+<table>
+    <tablehead>
+        <tr>
+            <th>name</th>
+            <th>lastname</th>
+            <th>identification type</th>
+            <th>indentification number</th>
+            <th>phone</th>
+            <th>cellphone</th>
+            <th>adress</th>
+            <th>birthdate</th>
+        </tr>
+        {% for client in clients %}
+        
+            <tr>
+                <th>{{ client.name }}</th>
+                <th>{{ client.lastname}}</th>
+                <th>{{ client.identificationType }}</th>
+                <th>{{ client.identificationNumber }}</th>
+                <th>{{ client.phone }}</th>
+                <th>{{ client.cellphone }}</th>
+                <th>{{ client.address}}</th>
+                <th>{{ client.birthdate | date('d-m-Y H:i') }}</th>
+            </tr>
+        
+        {% endfor %}
+    </tablehead>
+    
+</table>

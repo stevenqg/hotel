@@ -1,3 +1,14 @@
 control_homepage:
     path:     /
     defaults: { _controller: ControlBundle:Default:index }
+
+control_client_index:
+    path:     /control/client/index
+    defaults: { _controller: ControlBundle:Client:index }
+
+
+control_client_add:
+    path:     /control/client/add
+    defaults: { _controller: ControlBundle:Client:add }
+
+    

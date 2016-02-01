@@ -59,7 +59,7 @@ class Client
     /**
      * @var int
      *
-     * @ORM\Column(name="cellphone", type="integer", unique=true)
+     * @ORM\Column(name="cellphone", type="string", length=20, unique=true)
      */
     private $cellphone;
 
