@@ -120,6 +120,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'ControlBundle\\Controller\\ClientController::addAction',  '_route' => 'control_client_add',);
             }
 
+            // control_client_create
+            if ($pathinfo === '/control/client/create') {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_control_client_create;
+                }
+
+                return array (  '_controller' => 'ControlBundle\\Controller\\ClientController::createAction',  '_route' => 'control_client_create',);
+            }
+            not_control_client_create:
+
         }
 
         // homepage

@@ -1,29 +1,48 @@
-<table>
-    <tablehead>
-        <tr>
-            <th>name</th>
-            <th>lastname</th>
-            <th>identification type</th>
-            <th>indentification number</th>
-            <th>phone</th>
-            <th>cellphone</th>
-            <th>adress</th>
-            <th>birthdate</th>
-        </tr>
-        {% for client in clients %}
+{% extends "layout.html.twig" %}
+
+
+{% block body %}
+
+{{ parent() }}
+
+    <div class="table-responsive container">
+        <div class="page-header">
+            <h3>clients list</h3>
+        </div>
         
-            <tr>
-                <th>{{ client.name }}</th>
-                <th>{{ client.lastname}}</th>
-                <th>{{ client.identificationType }}</th>
-                <th>{{ client.identificationNumber }}</th>
-                <th>{{ client.phone }}</th>
-                <th>{{ client.cellphone }}</th>
-                <th>{{ client.address}}</th>
-                <th>{{ client.birthdate | date('d-m-Y H:i') }}</th>
-            </tr>
-        
-        {% endfor %}
-    </tablehead>
-    
-</table>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>lastname</th>
+                    <th>identification type</th>
+                    <th>indentification number</th>
+                    <th>phone</th>
+                    <th>cellphone</th>
+                    <th>adress</th>
+                    <th>birthdate</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+                {% for client in clients %}
+                
+                    <tr>
+                        <th>{{ client.name }}</th>
+                        <th>{{ client.lastname}}</th>
+                        <th>{{ client.identificationType }}</th>
+                        <th>{{ client.identificationNumber }}</th>
+                        <th>{{ client.phone }}</th>
+                        <th>{{ client.cellphone }}</th>
+                        <th>{{ client.address}}</th>
+                        <th>{{ client.birthdate | date('d-m-Y H:i') }}</th>
+                        <td>
+                            <a href="" class="btn btn-sm btn-info">View</a>
+                            <a href="#" class="btn btn-sm btn-info">Edit</a>
+                            <a href="#" class="btn btn-sm btn-info">Delete</a>
+                        </td>
+                    </tr>
+                
+                {% endfor %}
+        </table>
+    </div>
+{% endblock %}
