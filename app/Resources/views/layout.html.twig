@@ -11,7 +11,11 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        
+        {% include ("nav.html.twig") %}
+        
+        {% endblock %}
         {% block javascripts %}
         <script href="{{ asset('public/js/bootstrap.min.js')}}"></script>
         <script href="{{ asset('public/js/jquery-1.12.0.min.js')}}"></script>

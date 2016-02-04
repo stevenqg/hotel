@@ -15,5 +15,15 @@ control_client_create:
     path:     /control/client/create
     defaults: { _controller: ControlBundle:Client:create }
     methods: POST
+    
+control_client_edit:
+    path:   /control/client/edit/{id}
+    defaults: {_controler: ControlBundle:Client:edit }
+    
+control_client_update:
+    path:   /control/client/update
+    defaults: {_controler: ControlBundle:Client:update }
+    methods: POST
+
 
     

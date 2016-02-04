@@ -50,8 +50,25 @@ class ClientController extends Controller
             return $this->redirectToRoute('control_client_index');
         }
 
-        return $this->render('UserBundle:User:add.html.twig', array('form' => $form->createView()));
+        return $this->render('ControlBundle:Client:add.html.twig', array('form' => $form->createView()));
         
+    }
+    
+    public function editAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $client = $em->getRepository('ControlBundle:Client')->findAll($id);
+        
+        if(!$client)
+        {
+            throw $this->createNotFoundException('no hay un cliente con dicho id');
+        }
+        $form = $this->createForm(ClientType::class, $client, array(
+            'action' => $this->generateUrl('control_client_update', array('id' => $client->getId())),
+            'method' => 'POST'
+            ));
+        
+        return $this->render('ControlBundle:Client:edit.html.twig', array('client' => $client, 'form' => $form->createView()));
     }
 
 }
