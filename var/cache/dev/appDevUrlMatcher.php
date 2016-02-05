@@ -133,17 +133,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // control_client_edit
             if (0 === strpos($pathinfo, '/control/client/edit') && preg_match('#^/control/client/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-                return $this->mergeDefaults(array_replace($matches, array('_route' => 'control_client_edit')), array (  '_controler' => 'ControlBundle:Client:edit',));
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'control_client_edit')), array (  '_controller' => 'ControlBundle\\Controller\\ClientController::editAction',));
             }
 
             // control_client_update
-            if ($pathinfo === '/control/client/update') {
+            if (0 === strpos($pathinfo, '/control/client/update') && preg_match('#^/control/client/update/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                 if ($this->context->getMethod() != 'POST') {
                     $allow[] = 'POST';
                     goto not_control_client_update;
                 }
 
-                return array (  '_controler' => 'ControlBundle:Client:update',  '_route' => 'control_client_update',);
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'control_client_update')), array (  '_controller' => 'ControlBundle\\Controller\\ClientController::updateAction',));
             }
             not_control_client_update:
 

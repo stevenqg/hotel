@@ -57,7 +57,7 @@ class ClientController extends Controller
     public function editAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $client = $em->getRepository('ControlBundle:Client')->findAll($id);
+        $client = $em->getRepository('ControlBundle:Client')->find($id);
         
         if(!$client)
         {
@@ -71,4 +71,31 @@ class ClientController extends Controller
         return $this->render('ControlBundle:Client:edit.html.twig', array('client' => $client, 'form' => $form->createView()));
     }
 
+    public function updateAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $client = $em->getRepository('ControlBundle:Client')->find($id);
+        if(!$client)
+        {
+            throw $this->createNotFoundException('problemas al actualizar el cliente - no se encuentra');
+        }
+        $form = $this->createForm(ClientType::class, $client, array(
+            'action' => $this->generateUrl('control_client_update', array('id' => $client->getId())),
+            'method' => 'POST'
+            ));        
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->flush();
+            return $this->redirectToRoute('control_client_index');
+        }
+        
+        return $this->render('ControlBundle:Client:edit.html.twig', array('client' => $client, 'form' => $form->createView()));
+        
+        
+        
+        
+    }
+    
 }
